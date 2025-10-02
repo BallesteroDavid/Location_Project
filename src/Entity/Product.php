@@ -35,7 +35,7 @@ class Product
     private ?User $owner = null;
 
     #[ORM\ManyToOne(inversedBy: 'products')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?User $borrower = null;
 
     public function getId(): ?int
@@ -103,24 +103,24 @@ class Product
         return $this;
     }
 
-    public function getOwner(): ?user
+    public function getOwner(): ?User
     {
         return $this->owner;
     }
 
-    public function setOwner(?user $owner): static
+    public function setOwner(?User $owner): static
     {
         $this->owner = $owner;
 
         return $this;
     }
 
-    public function getBorrower(): ?user
+    public function getBorrower(): ?User
     {
         return $this->borrower;
     }
 
-    public function setBorrower(?user $borrower): static
+    public function setBorrower(?User $borrower): static
     {
         $this->borrower = $borrower;
 
