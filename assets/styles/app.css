@@ -1,10 +1,29 @@
 body {
-    background-color: skyblue;
+    background-color: rgb(252, 252, 252);
 }
 
 .img_size {
+    border-radius: 35px;
     width: 200px;
     height: 200px;
     object-fit: cover;
     display: block;
+}
+
+.article {
+    border-radius: 35px;
+    box-shadow: 0 0 5px 5px rgb(248, 248, 248);
+    padding: 35px;
+    background-color: rgb(253, 140, 248);
+
+}
+
+td {
+    border-radius: 35px;
+    margin: 15px;
+    background-color: rgb(255, 255, 255);
+}
+
+table {
+    margin: auto;
 }
