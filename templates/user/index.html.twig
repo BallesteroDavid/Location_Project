@@ -4,26 +4,38 @@
 
 {% block body %}
     <h1>Bienvenue {{ user.email }}</h1>
-    <a href="{{ path('app_product_new') }}">Ajouter un nouveau produit</a>
-    {# si le produit n est pas vide  #}
+
+    <p>
+        <a href="{{ path('app_product_new') }}" class="btn btn-primary">Ajouter un nouveau produit</a>
+    </p>
+
     {% if products is not empty %}
         <h2>Vos produits ajoutés :</h2>
-        <ul>
-        {# foresh de ems produits #}
-            {% for product in products %}
-                <li>
-                    <strong>{{ product.name }}</strong> - {{ product.content }}
-                    {% if product.brand %} (Marque : {{ product.brand }}) {% endif %}
-                </li>
-                <li>
-                    <a href="{{ path('app_product_show', {'id' : product.id})}}">voir</a><br>
-                </li>
-                <li>
-                    <a href="{{ path('app_product_edit', {'id' : product.id})}}">modifier</a><br>
-                </li>
-            {% endfor %}
-        </ul>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Marque</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.content }}</td>
+                        <td>{{ product.brand ?: '-' }}</td>
+                        <td>
+                            <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-sm btn-info">Voir</a>
+                            <a href="{{ path('app_product_edit', {'id': product.id}) }}" class="btn btn-sm btn-warning">Modifier</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     {% else %}
         <p>Vous n'avez pas encore ajouté de produit.</p>
     {% endif %}
 {% endblock %}
+
