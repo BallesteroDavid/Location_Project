@@ -12,18 +12,18 @@
     <table class="table">
         <thead>
             <tr>
+                <th>Image</th>
                 <th>Nom</th>
                 <th>Description</th>
-                <th>Image</th>
                 <th>Marque</th>
             </tr>
         </thead>
         <tbody>
         {% for product in products %}
             <tr>
+                <td><img class="img_size" src="{{ asset('upload/product/' ~ product.img)}}" alt=""></td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.content }}</td>
-                <td>{{ product.img }}</td>
                 <td>{{ product.brand }}</td>
                 <td>
                     <a href="{{ path('app_product_show', {'id': product.id}) }}">Afficher l'annonce</a>
@@ -40,10 +40,10 @@
         <tbody>
         {% for product in products %}
             <tr>
+                <td><img class="img_size" src="{{ asset('upload/product/' ~ product.img)}}" alt=""></td>
                 <td>Nom : {{ product.name }}</td>
                 <td>Description : {{ product.content }}</td>
-                <td>Image : {{ product.img }}</td>
-                <td>{{ product.brand }}</td>
+                <td>Marque :{{ product.brand }}</td>
                 <td>
                     <a href="{{ path('app_product_show', {'id': product.id}) }}">Afficher l'annonce</a>
                     {# <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a> #}
