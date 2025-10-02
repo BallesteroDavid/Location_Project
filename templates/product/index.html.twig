@@ -3,39 +3,57 @@
 {% block title %}Product index{% endblock %}
 
 {% block body %}
-    <h1>Product index</h1>
+    <h2>Vitrine</h2>
+
+    <div>......FILTRE.....</div>
+
+    <a href="{{ path('app_product_new') }}">Ajouter un produit</a>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Content</th>
-                <th>Img</th>
-                <th>Brand</th>
-                <th>actions</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Marque</th>
             </tr>
         </thead>
         <tbody>
         {% for product in products %}
             <tr>
-                <td>{{ product.id }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.content }}</td>
                 <td>{{ product.img }}</td>
                 <td>{{ product.brand }}</td>
                 <td>
-                    <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
+                    <a href="{{ path('app_product_show', {'id': product.id}) }}">Afficher l'annonce</a>
+                    {# <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a> #}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">aucun article trouvé</td>
+            </tr>
+        {% endfor %}
+{# test affichage produit #}
+        <table class="table">
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>Nom : {{ product.name }}</td>
+                <td>Description : {{ product.content }}</td>
+                <td>Image : {{ product.img }}</td>
+                <td>{{ product.brand }}</td>
+                <td>
+                    <a href="{{ path('app_product_show', {'id': product.id}) }}">Afficher l'annonce</a>
+                    {# <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a> #}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">aucun article trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_product_new') }}">Create new</a>
 {% endblock %}

@@ -11,6 +11,16 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
+    <header>
+        <h1>1000 et une façon de se faire plaisir nardine</h1>
+        <nav>
+            <ol>
+                <li><a href="{{ path('app_product_index') }}">Acceuil</a></li>
+                {# <li>Mon compte, <a href="{{ path('app_user_index')}}">editer l'annonce</a></li> #}
+                <li>Inscription/Connexion/Déconexion</li>
+            </ol>
+        </nav>
+    </header>
     <body>
         {% block body %}{% endblock %}
     </body>
