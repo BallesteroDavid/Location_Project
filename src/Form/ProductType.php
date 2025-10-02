@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Product;
-use App\Entity\type;
+use App\Entity\Type;
 use App\Entity\user;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
