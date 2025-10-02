@@ -18,9 +18,9 @@
                 <th>Marque</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="article">
         {% for product in products %}
-            <tr>
+            <tr class="article">
                 <td><img class="img_size" src="{{ asset('upload/product/' ~ product.img)}}" alt=""></td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.content }}</td>
@@ -39,7 +39,7 @@
         <table class="table">
         <tbody>
         {% for product in products %}
-            <tr>
+            <tr class="article">
                 <td><img class="img_size" src="{{ asset('upload/product/' ~ product.img)}}" alt=""></td>
                 <td>Nom : {{ product.name }}</td>
                 <td>Description : {{ product.content }}</td>
