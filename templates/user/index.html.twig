@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil de {{ user.email }}{% endblock %}
+
+{% block body %}
+    <h1>Bienvenue {{ user.email }}</h1>
+    <a href="{{ path('app_product_new') }}">Ajouter un nouveau produit</a>
+    {# si le produit n est pas vide  #}
+    {% if products is not empty %}
+        <h2>Vos produits ajoutés :</h2>
+        <ul>
+        {# foresh de ems produits #}
+            {% for product in products %}
+                <li>
+                    <strong>{{ product.name }}</strong> - {{ product.content }}
+                    {% if product.brand %} (Marque : {{ product.brand }}) {% endif %}
+                </li>
+                <li>
+                    <a href="{{ path('app_product_show', {'id' : product.id})}}">voir</a><br>
+                </li>
+                <li>
+                    <a href="{{ path('app_product_edit', {'id' : product.id})}}">modifier</a><br>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Vous n'avez pas encore ajouté de produit.</p>
+    {% endif %}
+{% endblock %}
