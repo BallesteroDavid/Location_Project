@@ -41,6 +41,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Product::class, mappedBy: 'owner')]
     private Collection $products;
 
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    private ?string $Name = null;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -142,6 +145,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $product->setOwner(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->Name;
+    }
+
+    public function setName(string $Name): static
+    {
+        $this->Name = $Name;
 
         return $this;
     }
