@@ -22,7 +22,6 @@ final class UserController extends AbstractController
 
         // je recupere mes produits ajoutee
         $products = $productRepository->findBy(['owner' => $user]);
-
         return $this->render('user/index.html.twig', [
             'user' => $user,
             'products' => $products,
