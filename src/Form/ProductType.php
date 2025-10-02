@@ -46,10 +46,10 @@ class ProductType extends AbstractType
                 'class' => type::class,
                 'choice_label' => 'name',
             ])
-            ->add('owner', EntityType::class, [
-                'class' => user::class,
-                'choice_label' => 'email',
-            ])
+            // ->add('owner', EntityType::class, [
+            //     'class' => user::class,
+            //     'choice_label' => 'email',
+            // ])
             // ->add('borrower', EntityType::class, [
             //     'class' => user::class,
             //     'choice_label' => 'email',

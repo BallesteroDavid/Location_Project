@@ -107,6 +107,67 @@ final class ProductController extends AbstractController
         ]);
     }
 
+    // Demande d'emprunt
+    #[Route('/{id}/request', name: 'app_product_request', methods: ['POST'])]
+    #[IsGranted('ROLE_USER')]
+    public function request(Product $product, EntityManagerInterface $em): Response
+    {
+        $user = $this->getUser();
+
+        // Vérifie que le user n'est pas le owner
+        if($product->getOwner() === $user) 
+        {
+            $this->addFlash('Erreur', 'Vous ne pouvez pas emprunter/demandé votre prope produit');
+            return $this->redirectToRoute('app_product_index');
+        }
+
+        //  Vérifie si produit est déjà demandé
+        if($product->getBorrower() !== null)
+        {
+            $this->addFlash('Erreur', 'Ce produit est déja emprunté/emprunté');
+            return $this->redirectToRoute('app_product_index');
+        }
+
+        // Assigner le borrower (demande en attente)
+        $product->setBorrower($user);
+
+        $em->flush();
+
+        $this->addFlash('Bravo!', 'Demande de location envoyée !');
+        return $this->redirectToRoute('app_product_index');
+    }   
+
+    // User(Owner) décide ou pas d'autoriser l'emprunt
+    #[Route('/{id}/decision', name: 'app_product_decision', methods: ['POST'])]
+    #[IsGranted('ROLE_USER')]
+    public function decision(Product $product, Request $request, EntityManagerInterface $em): Response
+    {
+        $user = $this->getUser();
+
+        // Vérifie que le user est bien Owner 
+        if ($product->getOwner() !== $user) 
+        {
+            throw $this->createAccessDeniedException('Seul le propriétaire peut prendre la décision');
+        }
+
+        // Valide ou Refus
+        $action = $request->request->get('action');
+
+        if ($action === 'accept') {
+            // Validation, demande acceptée
+            $this->addFlash('Bravo!', 'La demande a été acceptée');
+        } elseif ($action === 'reject') {
+            // Refus de la demande, la valeur redevient null
+            $product->setBorrower(null);
+            $this->addFlash('Bravo','La demande a été refusée');
+        }
+
+        $em->flush();
+        return $this->redirectToRoute('app_product_index');
+    }
+
+
+    // Supprimer un produit
     #[Route('/{id}', name: 'app_product_delete', methods: ['POST'])]
     public function delete(Request $request, Product $product, EntityManagerInterface $entityManager): Response
     {
