@@ -9,6 +9,7 @@ header {
     4px;
     background-color: rgb(28, 27, 28);
 }
+
 .header_container {
     display: flex;
     justify-content: space-between;
@@ -52,6 +53,12 @@ header {
 }
 
 .user-product-main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.user-product-borrow {
     display: flex;
     flex-wrap: wrap;
 }
