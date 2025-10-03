@@ -22,7 +22,19 @@
         </tbody>
     </table>
 
+
     <h2 class="sectionTitle">Autres produits proposé par {{ product.owner.name }}</h2>
+
+    {% if app.user and product.owner != app.user and product.borrower is null %}
+        <form action="{{ path('app_product_request', {'id': product.id}) }}" method="post">
+            <button type="submit" class="btn btn-primary">Demander la location</button>
+        </form>
+    {% endif %}
+    <p>AJOUT DE TOUT LES PRODUITS QUE LE USER A MIS EN LIGNE</p>
+
+    <a href="{{ path('app_product_index') }}">Retour a la liste des articles</a>
+
+    <a href="{{ path('app_product_edit', {'id': product.id}) }}">editer l'annonce</a>
 
     <table class="table">
         <thead>
