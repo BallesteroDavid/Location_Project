@@ -5,8 +5,6 @@
 {% block body %}
     <h2>Vitrine</h2>
 
-    <div>......FILTRE.....</div>
-
     <a href="{{ path('app_product_new') }}">Ajouter un produit</a>
 
     <table class="table">
@@ -25,25 +23,6 @@
                 <td>{{ product.name }}</td>
                 <td>{{ product.content }}</td>
                 <td>{{ product.brand }}</td>
-                <td>
-                    <a href="{{ path('app_product_show', {'id': product.id}) }}">Afficher l'annonce</a>
-                    {# <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a> #}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">aucun article trouvé</td>
-            </tr>
-        {% endfor %}
-{# test affichage produit #}
-        <table class="table">
-        <tbody>
-        {% for product in products %}
-            <tr class="article">
-                <td><img class="img_size" src="{{ asset('upload/product/' ~ product.img)}}" alt=""></td>
-                <td>Nom : {{ product.name }}</td>
-                <td>Description : {{ product.content }}</td>
-                <td>Marque :{{ product.brand }}</td>
                 <td>
                     <a href="{{ path('app_product_show', {'id': product.id}) }}">Afficher l'annonce</a>
                     {# <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a> #}
