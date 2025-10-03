@@ -22,6 +22,7 @@
         </tbody>
     </table>
 
+    <a href="{{ path('app_product_index') }}">Retour a la liste des articles</a>
 
     <h2 class="sectionTitle">Autres produits proposé par {{ product.owner.name }}</h2>
 
@@ -30,11 +31,6 @@
             <button type="submit" class="btn btn-primary">Demander la location</button>
         </form>
     {% endif %}
-    <p>AJOUT DE TOUT LES PRODUITS QUE LE USER A MIS EN LIGNE</p>
-
-    <a href="{{ path('app_product_index') }}">Retour a la liste des articles</a>
-
-    <a href="{{ path('app_product_edit', {'id': product.id}) }}">editer l'annonce</a>
 
     <table class="table">
         <thead>
@@ -50,8 +46,8 @@
             <tr class="article">
                 <td><h4>{{ ownerProduct.name }}</h4></td>
                 <td><img src="{{ asset('upload/product/' ~ ownerProduct.img) }}" alt="{{ ownerProduct.name }}" width="200"></td>
-                <td><strong>Marque:</strong> {{ ownerProduct.brand }}</p></td>
-                <td><strong>Description:</strong> {{ ownerProduct.content }}</p></td>
+                <td>{{ ownerProduct.brand }}</p></td>
+                <td>{{ ownerProduct.content }}</p></td>
                 <td>
                     <a href="{{ path('app_product_show', {'id': product.id}) }}">Afficher l'annonce</a>
                     {# <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a> #}
@@ -59,6 +55,7 @@
             </tr>
         {% else %}
             <tr>
+                {# colspan sert a indiquer a qu'une cellune <td> ou <th> doit s'etendre sur plusieurs colonnes au lieu d'une #}
                 <td colspan="6">aucun article trouvé</td>
             </tr>
         {% endfor %}
