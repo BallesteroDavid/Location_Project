@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(171, 103, 25);
+    background-color: rgb(160, 121, 80);
     padding: 0;
     margin: 0;
 }
@@ -40,8 +40,70 @@ header {
     border-radius: 8px;
 }
 
+/* User Index */
+
+.user-title {
+    padding: 0 0 0 1rem;
+    font-size: 1.5rem;
+}
+
+.user-new-product {
+    padding: 0 0 0 1rem;
+}
+
+.user-product-main {
+    display: flex;
+    flex-wrap: wrap;
+}
+.user-link-new-product {
+    padding: 0.35rem;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: rgb(120, 16, 16);
+    color:white;
+}
+
+.user-link-show-product {
+    padding: 0.35rem;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: rgb(120, 16, 16);
+    color:white;
+}
+
+.user-link-edit-product {
+    padding: 0.35rem;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: rgb(120, 16, 16);
+    color:white;
+}
+
+.user-delete-product {
+    padding: 0.4rem 0 0 0.5rem;
+}
+.title-product {
+    padding: 0 0 0 1rem;
+}
+
+.product-information-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    margin: 2rem 2rem;
+    background-color: rgb(177, 157, 134);
+    border-radius: 15px;
+    width: 35%;
+}
+
+.product-information-content>h3,p {
+    margin: 0;
+    padding: 7px;
+}
+
 .img_size {
-    border-radius: 35px;
+    border-radius: 15px;
     width: 200px;
     height: 200px;
     object-fit: cover;

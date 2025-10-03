@@ -3,26 +3,34 @@
 {% block title %}Profil de {{ user.email }}{% endblock %}
 
 {% block body %}
-    <h1>Bienvenue {{ user.name }}</h1>
 
-    <p>
-        <a href="{{ path('app_product_new') }}">Ajouter un nouveau produit</a>
+    <h1 class="user-title">Bienvenue {{ user.name }}</h1>
+
+    <p class="user-new-product">
+        <a class="user-link-new-product" href="{{ path('app_product_new') }}">Ajouter un produit</a>
     </p>
     {# si j ai des produits- tu les affiche #}
     {% if products is not empty %}
-        <h2>Vos produits ajoutés :</h2>
+        <h2 class="title-product">Vos produits :</h2>
         {# un forech de mes produits #}
         {% for product in products %}
-            <div>
-                <h3>{{ product.name }}</h3>
-                <p>{{ product.content }}</p>
-                <p>Marque: {{ product.brand }}</p>
-                <p>
-                    <a href="{{ path('app_product_show', {'id': product.id}) }}">Voir</a> |
-                    <a href="{{ path('app_product_edit', {'id': product.id}) }}">Modifier</a>
-                </p>
+            <div class="product-information-container">
+                <img class="img_size" src="{{ asset('upload/product/' ~ product.img)}}" alt="">
+                <div class="product-information-content">
+                    <h3>Nom du produit : <br>{{ product.name }}</h3>
+                    <p>Description du produit : <br>{{ product.content }}</p>
+                    <p>Marque: {{ product.brand }}</p>
+                    <p>
+                        <a class="user-link-show-product" href="{{ path('app_product_show', {'id': product.id}) }}">Voir</a> |
+                        <a class="user-link-edit-product" href="{{ path('app_product_edit', {'id': product.id}) }}">Modifier</a>
+                        <form class="user-delete-product" method="post" action="{{ path('app_product_delete', {'id': product.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+                            <button class="btn">Delete</button>
+                        </form>
+                    </p>
+                </div>
             </div>
-            <br>
+            
             {% if product.owner == app.user and product.borrower is not null %}
                 <p>{{ product.borrower.name }} souhaite emprunter {{ product.name }}</p>
                 <form action="{{ path('app_product_decision', {'id': product.id}) }}" method="post">
