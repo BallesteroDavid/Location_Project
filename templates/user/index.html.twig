@@ -23,6 +23,13 @@
                 </p>
             </div>
             <br>
+            {% if product.owner == app.user and product.borrower is not null %}
+                <p>{{ product.borrower.name }} souhaite emprunter {{ product.name }}</p>
+                <form action="{{ path('app_product_decision', {'id': product.id}) }}" method="post">
+                    <button name="action" value="accept" class="btn btn-success">Accepter</button>
+                    <button name="action" value="reject" class="btn btn-danger">Refuser</button>
+                </form>
+            {% endif %}
         {% endfor %}
     {% else %}
         <p>Vous n'avez pas encore ajouté de produit.</p>
