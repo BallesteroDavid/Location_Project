@@ -82,6 +82,7 @@ header {
 .user-delete-product {
     padding: 0.4rem 0 0 0.5rem;
 }
+
 .title-product {
     padding: 0 0 0 1rem;
 }
@@ -116,6 +117,23 @@ header {
     padding: 35px;
     background-color: rgb(253, 140, 248);
 
+}
+/* Acceuil tout les articles */
+
+.title-product {
+    padding: 0 0 0 1rem;
+}
+
+.new-product {
+    padding: 0 0 0 1rem;
+}
+
+.link-new-product {
+    padding: 0.36rem;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: rgb(120, 16, 16);
+    color:white;
 }
 
 td {
