@@ -12,14 +12,16 @@
         {% endblock %}
     </head>
     <header>
-        <h1>1000 et une façon de se faire plaisir nardine</h1>
-        <nav>
-            <ol>
-                <li><a href="{{ path('app_product_index') }}">Acceuil</a></li>
-                <li><a href="{{ path('app_user_index')}}">Mon compte</a></li>
-                <li><a href="{{ path('app_logout')}}">Déconnexion</a></li>
-            </ol>
-        </nav>
+        <div class="header_container">
+            <h1 class="header_container_title">1000 et une façon de se faire plaisir nardine</h1>
+            <nav class="header_container_nav">
+                <ul class="header_container_links">
+                    <li class="header_container_links_content"><a class="header_links" href="{{ path('app_product_index') }}">Acceuil</a></li>
+                    <li class="header_container_links_content"><a class="header_links" href="{{ path('app_user_index')}}">Mon compte</a></li>
+                    <li class="header_container_links_content"><a class="header_links" href="{{ path('app_logout')}}">Déconnexion</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <body>
         {% block body %}{% endblock %}
