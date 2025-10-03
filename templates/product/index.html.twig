@@ -3,9 +3,11 @@
 {% block title %}Product index{% endblock %}
 
 {% block body %}
-    <h2>Vitrine</h2>
+    <h2 class="title-product">Produits à louer</h2>
 
-    <a href="{{ path('app_product_new') }}">Ajouter un produit</a>
+    <p class="new-product">
+        <a class="link-new-product" href="{{ path('app_product_new') }}">Ajouter un produit</a>
+    </p>
 
     <table class="table">
         <thead>
