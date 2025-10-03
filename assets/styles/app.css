@@ -27,3 +27,18 @@ td {
 table {
     margin: auto;
 }
+
+.sectionTitle{
+    border-radius: 35px;
+    box-shadow: 0 0 5px 5px rgb(248, 248, 248);
+    background-color: rgb(255, 150, 250);
+    text-align: center;
+    max-width: 500px;
+    margin: auto;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

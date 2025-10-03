@@ -65,8 +65,15 @@ final class ProductController extends AbstractController
     #[Route('/{id}', name: 'app_product_show', methods: ['GET'])]
     public function show(Product $product): Response
     {
+        // Récupération de tous les autres produits du propriétaire
+        // Récupére le propriétaire du produit
+        $owner = $product->getOwner();
+        // Récupére les produits proposé par le propriétaire
+        $ownerProducts = $owner->getProducts();
+
         return $this->render('product/show.html.twig', [
             'product' => $product,
+            'ownerProducts' => $ownerProducts,//new
         ]);
     }
 

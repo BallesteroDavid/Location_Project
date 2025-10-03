@@ -3,12 +3,12 @@
 {% block title %}Product{% endblock %}
 
 {% block body %}
-    <h2>{{ product.name }}</h2>
+
+    <h2 class="sectionTitle">{{ product.name }}</h2>
 
     <table class="table">
-        <tbody>
+        <tbody class="flex">
             <tr>
-                <th>Img :</th>
                 <td><img class="img_size" src="{{ asset('upload/product/' ~ product.img)}}" alt=""></td>
             </tr>
             <tr>
@@ -21,6 +21,10 @@
             </tr>
         </tbody>
     </table>
+
+
+    <h2 class="sectionTitle">Autres produits proposé par {{ product.owner.name }}</h2>
+
     {% if app.user and product.owner != app.user and product.borrower is null %}
         <form action="{{ path('app_product_request', {'id': product.id}) }}" method="post">
             <button type="submit" class="btn btn-primary">Demander la location</button>
@@ -32,5 +36,31 @@
 
     <a href="{{ path('app_product_edit', {'id': product.id}) }}">editer l'annonce</a>
 
-    {# {{ include('product/_delete_form.html.twig') }} #}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Marque</th>
+            </tr>
+        </thead>
+        <tbody class="article">
+        {% for ownerProduct in ownerProducts %}
+            <tr class="article">
+                <td><h4>{{ ownerProduct.name }}</h4></td>
+                <td><img src="{{ asset('upload/product/' ~ ownerProduct.img) }}" alt="{{ ownerProduct.name }}" width="200"></td>
+                <td><strong>Marque:</strong> {{ ownerProduct.brand }}</p></td>
+                <td><strong>Description:</strong> {{ ownerProduct.content }}</p></td>
+                <td>
+                    <a href="{{ path('app_product_show', {'id': product.id}) }}">Afficher l'annonce</a>
+                    {# <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a> #}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">aucun article trouvé</td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
